@@ -1,0 +1,30 @@
+import telebot
+import sqlite3
+bot = telebot.TeleBot("7567989325:AAHHb4lizmChNJmZW7t-c4fUp-HKN-gtMjA")
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    connect = sqlite3.connect('UsersInfo.bd')
+    cursor = connect.cursor()
+
+    cursor.execute("""CREATE TABLE IF NOT EXISTS TeachersData(
+        TeaherID text,
+        TeacherLesson text
+    )""")
+
+    
+
+    UsersList = [message.chat.id]
+    cursor.execute("INSERT INTO UsersList VALUES();",TeachersData)
+
+    connect.commit()
+
+@bot.message_handler(commands=['delete'])
+def delete(message):
+    pass
+
+
+
+
+
+bot.polling()
